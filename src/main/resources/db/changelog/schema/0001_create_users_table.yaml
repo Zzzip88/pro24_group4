@@ -1,0 +1,70 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0001-create-users-table
+      author: mey-sovannthida
+
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_users
+                    nullable: false
+
+              - column:
+                  name: username
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: nick_name
+                  type: VARCHAR(100)
+
+              - column:
+                  name: password_hash
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+
+              - column:
+                  name: account_non_expired
+                  type: BOOLEAN
+
+              - column:
+                  name: account_non_locked
+                  type: BOOLEAN
+
+              - column:
+                  name: credentials_non_expired
+                  type: BOOLEAN
+
+              - column:
+                  name: enabled
+                  type: BOOLEAN
+
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+
+              - column:
+                  name: deleted_at
+                  type: TIMESTAMP
+
+              - column:
+                  name: created_by
+                  type: VARCHAR(50)
+
+              - column:
+                  name: updated_by
+                  type: VARCHAR(50)

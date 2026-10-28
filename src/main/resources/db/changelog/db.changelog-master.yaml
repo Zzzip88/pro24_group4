@@ -1,0 +1,18 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/schema/0001_create_users_table.yaml
+
+  - include:
+      file: db/changelog/schema/0002_create_roles_table.yaml
+
+  - include:
+      file: db/changelog/schema/0003_create_permissions_table.yaml
+
+  - include:
+      file: db/changelog/schema/0004_create_role_user_table.yaml
+
+  - include:
+      file: db/changelog/schema/0005_create_role_permission_table.yaml
+
+  - include:
+      file: db/changelog/seed/0006_seed_data.yaml

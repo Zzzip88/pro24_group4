@@ -1,0 +1,48 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0002-create-roles-table
+      author: mey-sovannthida
+
+      changes:
+        - createTable:
+            tableName: roles
+            columns:
+
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+
+              - column:
+                  name: name
+                  type: VARCHAR(100)
+                  constraints:
+                    unique: true
+                    nullable: false
+
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+
+              - column:
+                  name: created_at
+                  type: TIMESTAMP
+
+              - column:
+                  name: updated_at
+                  type: TIMESTAMP
+
+              - column:
+                  name: deleted_at
+                  type: TIMESTAMP
+
+              - column:
+                  name: created_by
+                  type: VARCHAR(50)
+
+              - column:
+                  name: updated_by
+                  type: VARCHAR(50)

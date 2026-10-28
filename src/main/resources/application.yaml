@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: pro24_group4
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pro24_group4
+    username: postgres
+    password: ${DB_PASSWORD}
+
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+logging:
+  level:
+    liquibase: DEBUG
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: 86400000
+app:
+  seed:
+    admin-password: ${APP_SEED_ADMIN_PASSWORD:}
+    dara-password: ${APP_SEED_DARA_PASSWORD:}

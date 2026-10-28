@@ -1,0 +1,177 @@
+
+databaseChangeLog:
+  - changeSet:
+      id: 0006-seed-roles-permissions
+      author: mey-sovannthida
+
+      changes:
+        # 1. Seed roles
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: name
+                  value: ROLE_ADMIN
+              - column:
+                  name: description
+                  value: Administrator Role
+
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 2
+              - column:
+                  name: name
+                  value: ROLE_USER
+              - column:
+                  name: description
+                  value: Default User Role
+
+        # 2. Seed permissions
+        - insert:
+            tableName: permissions
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 1
+              - column:
+                  name: name
+                  value: USER_READ
+              - column:
+                  name: description
+                  value: Read users
+
+        - insert:
+            tableName: permissions
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 2
+              - column:
+                  name: name
+                  value: USER_WRITE
+              - column:
+                  name: description
+                  value: Create and update users
+
+        - insert:
+            tableName: permissions
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 3
+              - column:
+                  name: name
+                  value: USER_DELETE
+              - column:
+                  name: description
+                  value: Delete users
+
+        - insert:
+            tableName: permissions
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 4
+              - column:
+                  name: name
+                  value: ROLE_READ
+              - column:
+                  name: description
+                  value: Read roles
+
+        - insert:
+            tableName: permissions
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 5
+              - column:
+                  name: name
+                  value: ROLE_WRITE
+              - column:
+                  name: description
+                  value: Create and update roles
+
+        - insert:
+            tableName: permissions
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 6
+              - column:
+                  name: name
+                  value: ROLE_DELETE
+              - column:
+                  name: description
+                  value: Delete roles
+
+        - insert:
+            tableName: permissions
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 7
+              - column:
+                  name: name
+                  value: PERMISSION_READ
+              - column:
+                  name: description
+                  value: Read permissions
+
+        - insert:
+            tableName: permissions
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 8
+              - column:
+                  name: name
+                  value: PERMISSION_WRITE
+              - column:
+                  name: description
+                  value: Create and update permissions
+
+        - insert:
+            tableName: permissions
+            columns:
+              - column:
+                  name: id
+                  valueNumeric: 9
+              - column:
+                  name: name
+                  value: PERMISSION_DELETE
+              - column:
+                  name: description
+                  value: Delete permissions
+
+        # 3. Link ROLE_ADMIN to all permissions
+        - sql:
+            sql: >
+              INSERT INTO role_permission (role_id, permission_id)
+              VALUES
+                (1, 1),
+                (1, 2),
+                (1, 3),
+                (1, 4),
+                (1, 5),
+                (1, 6),
+                (1, 7),
+                (1, 8),
+                (1, 9)
+
+        # 4. Link ROLE_USER to user.read
+        - insert:
+            tableName: role_permission
+            columns:
+              - column:
+                  name: role_id
+                  valueNumeric: 2
+              - column:
+                  name: permission_id
+                  valueNumeric: 1
